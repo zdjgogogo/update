@@ -1,0 +1,15 @@
+---
+- hosts: "{{ host }}"
+  tasks:
+  - name: "{{name}}: copy war"
+    copy: src={{soc_addr}}{{entry_name}} dest=/tmp/
+  - name: "{{name}}: stop tomcat "
+    shell: sudo service tomcat-{{name}} stop
+  - name: "{{name}}: delete old project"
+    shell: rm -rf {{app_addr}}ROOT/
+  - name: "{{name}}: unzip project"
+    shell: unzip -oq /tmp/{{entry_name}} -d {{app_addr}}ROOT/
+  - name: "{{name}}: start tomcat "
+    shell: sudo service tomcat-{{name}} start
+  - name: "{{name}}: delete tar"
+    shell: rm -f /tmp/{{entry_name}}

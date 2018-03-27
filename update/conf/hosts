@@ -1,0 +1,4 @@
+[apiserver]
+10.20.5.210 ansible_ssh_user=www ansible_ssh_pass='****'
+10.20.6.185 ansible_ssh_user=www ansible_ssh_pass='****'
+[]
